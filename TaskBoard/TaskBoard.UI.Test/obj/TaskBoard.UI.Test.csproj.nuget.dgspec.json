@@ -1,0 +1,351 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.UI.Test\\TaskBoard.UI.Test.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Data\\TaskBoard.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Data\\TaskBoard.Data.csproj",
+        "projectName": "TaskBoard.Data",
+        "projectPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Data\\TaskBoard.Data.csproj",
+        "packagesPath": "C:\\Users\\OGUZ.ASLAN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\OGUZ.ASLAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\GitSource\\Polaris\\src\\CoreLib\\outputpackages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\OGUZ.ASLAN\\.nuget\\packages": {},
+          "http://nexus3.logo.com.tr:8081/repository/nuget-nafcore": {},
+          "http://nuget.peoplise.com/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Services\\TaskBoard.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Services\\TaskBoard.Services.csproj",
+        "projectName": "TaskBoard.Services",
+        "projectPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Services\\TaskBoard.Services.csproj",
+        "packagesPath": "C:\\Users\\OGUZ.ASLAN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\OGUZ.ASLAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\GitSource\\Polaris\\src\\CoreLib\\outputpackages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\OGUZ.ASLAN\\.nuget\\packages": {},
+          "http://nexus3.logo.com.tr:8081/repository/nuget-nafcore": {},
+          "http://nuget.peoplise.com/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Data\\TaskBoard.Data.csproj": {
+                "projectPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Data\\TaskBoard.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.UI.Test\\TaskBoard.UI.Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.UI.Test\\TaskBoard.UI.Test.csproj",
+        "projectName": "TaskBoard.UI.Test",
+        "projectPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.UI.Test\\TaskBoard.UI.Test.csproj",
+        "packagesPath": "C:\\Users\\OGUZ.ASLAN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.UI.Test\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\OGUZ.ASLAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\GitSource\\Polaris\\src\\CoreLib\\outputpackages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\OGUZ.ASLAN\\.nuget\\packages": {},
+          "http://nexus3.logo.com.tr:8081/repository/nuget-nafcore": {},
+          "http://nuget.peoplise.com/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Data\\TaskBoard.Data.csproj": {
+                "projectPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Data\\TaskBoard.Data.csproj"
+              },
+              "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Services\\TaskBoard.Services.csproj": {
+                "projectPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Services\\TaskBoard.Services.csproj"
+              },
+              "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.UI\\TaskBoard.UI.csproj": {
+                "projectPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.UI\\TaskBoard.UI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.5.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.16.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.UI\\TaskBoard.UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.UI\\TaskBoard.UI.csproj",
+        "projectName": "TaskBoard.UI",
+        "projectPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.UI\\TaskBoard.UI.csproj",
+        "packagesPath": "C:\\Users\\OGUZ.ASLAN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.UI\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\OGUZ.ASLAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\GitSource\\Polaris\\src\\CoreLib\\outputpackages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\OGUZ.ASLAN\\.nuget\\packages": {},
+          "http://nexus3.logo.com.tr:8081/repository/nuget-nafcore": {},
+          "http://nuget.peoplise.com/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Data\\TaskBoard.Data.csproj": {
+                "projectPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Data\\TaskBoard.Data.csproj"
+              },
+              "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Services\\TaskBoard.Services.csproj": {
+                "projectPath": "C:\\Users\\OGUZ.ASLAN\\source\\repos\\ProjectBoard\\TaskBoard\\TaskBoard.Services\\TaskBoard.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

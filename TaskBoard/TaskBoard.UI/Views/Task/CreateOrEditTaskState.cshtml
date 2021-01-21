@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model TaskBoard.UI.Models.TaskStateModels.TaskStateDetailViewModel
+
+@{
+    ViewData["Title"] = Model == null || Model.TaskStateId <= 0 ? "Görev Takip Ekle" : "Görev Takip Düzenle";
+}
+<div class="container" style="max-width:100% !important">
+    <h2>@ViewData["Title"]</h2>
+    <div class="row">
+        <div class="col-md-8">
+            <section>
+                @if (Model != null)
+                {
+                    @Html.Partial("_StatusMessage", Model.StatusMessage)
+                }
+
+                <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                    <hr />
+                    <input asp-for="ProjectId" type="hidden" />
+                    <input asp-for="TaskId" type="hidden" />
+                    <input asp-for="TaskStateId" type="hidden" />
+                    <div class="form-group">
+                        <div>Kullanıcı: @Model.UserName</div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TaskStatus">Görev Durumu:</label>
+                        <select asp-for="@Model.TaskStatus" asp-items="Html.GetEnumSelectList<TaskBoard.Data.Enums.TaskStatus>()" class="form-control">
+                            <option value="">Görev tipi seçiniz</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Açıklama</label>
+                        <input asp-for="Description" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-success">Kaydet</button>
+                    &nbsp;&nbsp;
+                    <a asp-controller="Task" asp-action="CreateOrEdit" asp-route-id="@Model.ProjectId" asp-route-taskid="@Model.TaskId" class="btn btn-outline-primary">Görev Düzenleme Geri Dön</a>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

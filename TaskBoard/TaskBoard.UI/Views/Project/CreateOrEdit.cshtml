@@ -1,0 +1,37 @@
+﻿@model TaskBoard.UI.Models.ProjectViewModels.ProjectDetailViewModel
+@{
+    ViewData["Title"] = Model == null || Model.Id <= 0 ? "Proje Ekle" : "Proje Düzenle";
+}
+<div class="container" style="max-width:100% !important">
+    <h2>@ViewData["Title"]</h2>
+    <div class="row">
+        <div class="col-md-5">
+            <section>
+                @if (Model != null)
+                {
+                    @Html.Partial("_StatusMessage", Model.StatusMessage)
+                }
+
+                <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                    <hr />
+                    <input asp-for="Id" type="hidden" />
+                    <div class="form-group">
+                        <label asp-for="ProjectName">Proje Adı</label>
+                        <input asp-for="ProjectName" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-success">Kaydet</button>
+                    &nbsp;&nbsp;
+                    @if (Model != null && Model.Id > 0)
+                    {
+                        <button type="submit" asp-action="Delete" class="btn btn-danger">Sil</button>
+                    }
+                    &nbsp;&nbsp;
+                    <a asp-controller="Project" asp-action="Index" class="btn btn-outline-primary">Proje Listesine Geri Dön</a>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

@@ -1,0 +1,251 @@
+﻿@model TaskBoard.UI.Models.TaskViewModels.BoardViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev, taskid) {
+        console.log("drag called:", taskid);
+        ev.dataTransfer.setData("tasinandeger", taskid);
+    }
+
+    function drop(ev, projectid, taskstateid) {
+        ev.preventDefault();
+        var taskid = ev.dataTransfer.getData("tasinandeger");
+        console.log("drop called:");
+        console.log("projectid", projectid);
+        console.log("taskid", taskid);
+        console.log("taskstateid", taskstateid);
+
+        $.get("/Task/ChangeTaskStatus/" + projectid + "?taskid=" + taskid + "&taskstatus=" + taskstateid, 
+            function (data) {
+               location.reload();
+        });
+    }
+
+</script>
+
+<div class="scrum-content">
+    <section>
+        <a asp-controller="Task" asp-action="CreateOrEdit" asp-route-id="@Model.ProjectId" asp-route-taskid="-1" class="btn btn-info btn-sm">
+            Görev Ekle
+        </a>
+        &nbsp;&nbsp;
+        Proje Tahmini Bitiş Zamanı:
+        &nbsp;
+        @Model.EstimatedProjectDeadline
+        <hr />
+        <div id="board1" class="card-group" style="font-size: 14px !important;">
+            <div class="card bg-default" ondrop="drop(event, '@Model.ProjectId', 0)" ondragover="allowDrop(event)">
+                <div class="card-header text-center">
+                    <strong>Todo</strong>
+                </div>
+                <div class="card-body">
+                    @foreach (var task in Model.Tasks.Where(t => t.TaskStatus == TaskBoard.Data.Enums.TaskStatus.Todo))
+                    {
+                        <div class="card mb-2 text-white bg-dark item" draggable="true" ondragstart="drag(event, '@task.Id')">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-md-2" style="background-color: tomato; border-radius: 15px;">
+                                        @task.StoryPoint
+                                    </div>
+                                    <div class="col-md-10">
+                                        <strong>
+                                            @task.User?.UserName
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body  ">
+                                <p class="card-text">
+                                    @task.Id - @task.Description
+                                </p>
+                                <footer class="text-white">
+                                    Tahmini Süre -
+                                    <cite title="Source Title">@task.PreDate.ToString()</cite>
+                                </footer>
+                            </div>
+                            <div class="card-footer">
+                                <a asp-action="CreateOrEdit" asp-route-id="@Model.ProjectId" asp-route-taskid="@task.Id" class="btn btn-warning">
+                                    Düzenle
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@Model.ProjectId" asp-route-taskid="@task.Id" class="btn btn-danger">
+                                    Sil
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="card " ondrop="drop(event, '@Model.ProjectId', 1)" ondragover="allowDrop(event)">
+                <div class="card-header text-center">
+                    <strong>In Progress</strong>
+                </div>
+                <div class="card-body">
+                    @foreach (var task in Model.Tasks.Where(t => t.TaskStatus == TaskBoard.Data.Enums.TaskStatus.InProgress))
+                    {
+                        <div class="card mb-2 text-white bg-info item" draggable="true" ondragstart="drag(event, '@task.Id')">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-md-2" style="background-color: tomato; border-radius: 15px;">
+                                        @task.StoryPoint
+                                    </div>
+                                    <div class="col-md-10">
+                                        <strong>
+                                            @task.User?.UserName
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body  ">
+                                <p class="card-text">
+                                    @task.Id - @task.Description
+                                </p>
+                                <footer class="text-white">
+                                    Tahmini Süre -
+                                    <cite title="Source Title">@task.PreDate.ToString()</cite>
+                                </footer>
+                            </div>
+                            <div class="card-footer">
+                                <a asp-action="CreateOrEdit" asp-route-id="@Model.ProjectId" asp-route-taskid="@task.Id" class="btn btn-warning">
+                                    Düzenle
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@Model.ProjectId" asp-route-taskid="@task.Id" class="btn btn-danger">
+                                    Sil
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="card" ondrop="drop(event, '@Model.ProjectId', 2)" ondragover="allowDrop(event)">
+                <div class="card-header text-center">
+                    <strong>Revision</strong>
+                </div>
+                <div class="card-body">
+                    @foreach (var task in Model.Tasks.Where(t => t.TaskStatus == TaskBoard.Data.Enums.TaskStatus.Revision))
+                    {
+                        <div class="card mb-2 text-white bg-primary item" draggable="true" ondragstart="drag(event, '@task.Id')">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-md-2" style="background-color: tomato; border-radius: 15px;">
+                                        @task.StoryPoint
+                                    </div>
+                                    <div class="col-md-10">
+                                        <strong>
+                                            @task.User?.UserName
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body  ">
+                                <p class="card-text">
+                                    @task.Id - @task.Description
+                                </p>
+                                <footer class="text-white">
+                                    Tahmini Süre -
+                                    <cite title="Source Title">@task.PreDate.ToString()</cite>
+                                </footer>
+                            </div>
+                            <div class="card-footer">
+                                <a asp-action="CreateOrEdit" asp-route-id="@Model.ProjectId" asp-route-taskid="@task.Id" class="btn btn-warning">
+                                    Düzenle
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@Model.ProjectId" asp-route-taskid="@task.Id" class="btn btn-danger">
+                                    Sil
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="card" ondrop="drop(event, '@Model.ProjectId', 3)" ondragover="allowDrop(event)">
+                <div class="card-header text-center">
+                    <strong>Check</strong>
+                </div>
+                <div class="card-body">
+                    @foreach (var task in Model.Tasks.Where(t => t.TaskStatus == TaskBoard.Data.Enums.TaskStatus.Check))
+                    {
+                        <div class="card mb-2 text-white bg-secondary item" draggable="true" ondragstart="drag(event, '@task.Id')">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-md-2" style="background-color: tomato; border-radius: 15px;">
+                                        @task.StoryPoint
+                                    </div>
+                                    <div class="col-md-10">
+                                        <strong>
+                                            @task.User?.UserName
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body  ">
+                                <p class="card-text">
+                                    @task.Id - @task.Description
+                                </p>
+                                <footer class="text-white">
+                                    Tahmini Süre -
+                                    <cite title="Source Title">@task.PreDate.ToString()</cite>
+                                </footer>
+                            </div>
+                            <div class="card-footer">
+                                <a asp-action="CreateOrEdit" asp-route-id="@Model.ProjectId" asp-route-taskid="@task.Id" class="btn btn-warning">
+                                    Düzenle
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@Model.ProjectId" asp-route-taskid="@task.Id" class="btn btn-danger">
+                                    Sil
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="card " ondrop="drop(event, '@Model.ProjectId', 4)" ondragover="allowDrop(event)">
+                <div class="card-header text-center">
+                    <strong>Done</strong>
+                </div>
+                <div class="card-body">
+                    @foreach (var task in Model.Tasks.Where(t => t.TaskStatus == TaskBoard.Data.Enums.TaskStatus.Done))
+                    {
+                        <div class="card mb-2 text-white bg-success item" draggable="true" ondragstart="drag(event, '@task.Id')">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-md-2" style="background-color: tomato; border-radius: 15px;">
+                                        @task.StoryPoint
+                                    </div>
+                                    <div class="col-md-10">
+                                        <strong>
+                                            @task.User?.UserName
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body  ">
+                                <p class="card-text">
+                                    @task.Id - @task.Description
+                                </p>
+                                <footer class="text-white">
+                                    Tahmini Süre -
+                                    <cite title="Source Title">@task.PreDate.ToString()</cite>
+                                </footer>
+                            </div>
+                            <div class="card-footer">
+                                <a asp-action="CreateOrEdit" asp-route-id="@Model.ProjectId" asp-route-taskid="@task.Id" class="btn btn-warning">
+                                    Düzenle
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@Model.ProjectId" asp-route-taskid="@task.Id" class="btn btn-danger">
+                                    Sil
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

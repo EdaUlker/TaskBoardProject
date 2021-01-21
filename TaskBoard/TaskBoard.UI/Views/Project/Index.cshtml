@@ -1,0 +1,40 @@
+﻿@model TaskBoard.UI.Models.ProjectViewModels.ProjectIndexViewModel
+@{
+    ViewData["Title"] = "Projeler";
+}
+
+<div class="container" style="max-width:100% !important">
+    <h2>@ViewData["Title"]</h2>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a asp-controller="Project" asp-action="CreateOrEdit" asp-route-id="-1" class="btn btn-success">Proje Oluştur</a>
+            <br />
+            <br />
+            <section>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Proje Adı</th>
+                            <th class="text-center" style="width: 300px;">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var project in Model.Projects)
+                        {
+                            <tr>
+                                <td>@project.ProjectName</td>
+                                <td class="text-center">
+                                    <a asp-controller="Project" asp-action="CreateOrEdit" asp-route-id="@project.Id" class="btn btn-warning">Düzenle</a>
+                                    <a asp-controller="Task" asp-action="Index" asp-route-id="@project.Id" class="btn btn-info">
+                                        TaskBoard Görüntüle
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+</div>

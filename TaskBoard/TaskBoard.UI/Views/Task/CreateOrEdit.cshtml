@@ -1,0 +1,143 @@
+﻿@model TaskBoard.UI.Models.TaskViewModels.TaskDetailViewModel
+@{
+    ViewData["Title"] = Model == null || Model.TaskId <= 0 ? "Görev Ekle" : "Görev Düzenle";
+    var taskId = Model != null && Model.TaskId > 0 ? Model.TaskId.ToString() : "";
+    var taskDate = Model != null && Model.TaskDate != null ? Model.TaskDate.Value.ToShortDateString() : DateTime.Now.ToShortDateString();
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model != null)
+            {
+                @if (Model != null)
+                {
+                    @Html.Partial("_StatusMessage", Model.StatusMessage)
+                }
+                <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                    <input asp-for="TaskId" type="hidden" />
+                    <input asp-for="ProjectId" type="hidden" />
+                    <div class="row">
+                        <div class="col-md-4"> </div>
+                        <div class="col-md-4" style="font-size:18px;"> <h2>TEKNİK KART</h2></div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-4" style=" border: 1px solid black;font-weight: bold;">Tarih:</div>
+                                <div class="col-md-8" style=" border: 1px solid black;">@taskDate</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4" style=" border: 1px solid black;font-weight: bold;">Kart No:</div>
+                                <div class="col-md-8" style=" border: 1px solid black;">@taskId</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <section>
+                        <div class="row">
+                            <div class="col-md-3" style=" border: 1px solid black;font-weight: bold;">Proje No / Adı:</div>
+                            <div class="col-md-3" style=" border: 1px solid black;">@Model.ProjectName</div>
+                            <div class="col-md-3" style=" border: 1px solid black;font-weight: bold;">Tahmini Süre:</div>
+                            <div class="col-md-3" style=" border: 1px solid black;">
+                                <input asp-for="PreDate" type="date" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3" style=" border: 1px solid black;font-weight: bold;">Teknik Uzman:</div>
+                            <div class="col-md-3" style=" border: 1px solid black;">
+                                @if (Model.AvailableUsers != null)
+                                {
+                                    <select asp-for="@Model.UserId" asp-items="Model.AvailableUsers" class="form-control">
+                                        <option value="">Kullanıcı seçiniz</option>
+                                    </select>
+                                }
+                            </div>
+                            <div class="col-md-3" style=" border: 1px solid black;font-weight: bold;">Gerçekleşen Süre:</div>
+                            <div class="col-md-3" style=" border: 1px solid black;">
+                                <input asp-for="RealDate" type="date" class="form-control" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3" style=" border: 1px solid black;font-weight: bold;">Görev Durumu:</div>
+                            <div class="col-md-3" style=" border: 1px solid black;">
+                                <select asp-for="@Model.TaskStatus" asp-items="Model.AvailableStatus" class="form-control">
+                                    <option value="">Görev durumu seçiniz</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3" style=" border: 1px solid black;font-weight: bold;"> Story Point: </div>
+                            <div class="col-md-3" style=" border: 1px solid black;">
+                                <input asp-for="StoryPoint" type="number" class="form-control" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row" style="border: 1px solid black;">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Description">İşin Açıklaması:</label>
+                                    <textarea asp-for="Description" class="form-control" rows="8"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row" style="border: 1px solid black;">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Note">Notlar:</label>
+                                    <textarea asp-for="Note" class="form-control" rows="8"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <br />
+                    <button type="submit" class="btn btn-info">Kaydet</button>
+                    &nbsp;&nbsp;
+                    <a asp-controller="Task" asp-action="Index" asp-route-id="@Model.ProjectId" class="btn btn-outline-primary">Görev Board'a Geri Dön</a>
+                </form>
+
+                <hr />
+
+                @if (Model.TaskId > 0)
+                {
+                    <a asp-controller="Task" asp-action="CreateOrEditTaskState" asp-route-id="@Model.ProjectId" asp-route-taskid="@Model.TaskId" asp-route-taskstateid="-1" class="btn btn-success">İş Takibi Oluştur</a>
+                    <br />
+                    <section>
+                        <div class="row">
+                            <div class="col-md-12">
+                                İş Takibi:
+                            </div>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width: 300px;">İşlem</th>
+                                    <th>Kullanıcı</th>
+                                    <th>Tarih</th>
+                                    <th>Durum</th>
+                                    <th>Açıklama</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var state in Model.TaskStates)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            <a asp-controller="Task" asp-action="CreateorEditTaskState" asp-route-id="@Model.ProjectId" asp-route-taskid="@Model.TaskId" asp-route-taskstateid="@state.Id" class="btn btn-warning">Düzenle</a>
+                                            &nbsp; 
+                                            <a asp-controller="Task" asp-action="DeleteTaskState" asp-route-id="@Model.ProjectId" asp-route-taskid="@Model.TaskId" asp-route-taskstateid="@state.Id" class="btn btn-danger">Sil</a>
+                                        </td>
+                                        <td>@state.User?.UserName</td>
+                                        <td>@state.TaskStateDate.ToString()</td>
+                                        <td>@state.TaskStatus.ToString()</td>
+                                        <td>@state.Description</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </section>
+                }
+            }
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

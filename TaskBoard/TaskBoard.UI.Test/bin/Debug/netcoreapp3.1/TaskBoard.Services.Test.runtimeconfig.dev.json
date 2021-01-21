@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\edaul\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\edaul\\.nuget\\packages"
+    ]
+  }
+}
